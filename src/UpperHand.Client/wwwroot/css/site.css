@@ -1,0 +1,200 @@
+﻿/* -- VARIABLES 
+   --------------------------------------------------------------------------------------------- */
+:root {
+    --color-background-dark: #111111;
+    --color-background-light: #001E40;
+    --color-brand-primary: #0093fa;
+}
+
+/* -- GLOBAL 
+   --------------------------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: "Poppins", "Segoe UI", "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+body {
+    background: var(--color-background-dark);
+    background: linear-gradient(-7deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
+    color: rgb(236,239,244); 
+    font-size: 1rem;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+/* -- LAYOUT 
+   --------------------------------------------------------------------------------------------- */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 100%;
+}
+main {
+    margin: 0 auto;
+    height: 60vh;
+    width: 100vw;
+    text-align: center;
+}
+section {
+    max-width: 1056px;
+    margin: 0 auto;
+}
+/* -- COMPONENTS 
+   --------------------------------------------------------------------------------------------- */
+svg {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1px;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo svg {
+    margin: 0 auto;
+    stroke: var(--color-brand-primary);
+    height: 32px;
+    width: 32px;
+}
+.logo h3 {
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+#felt {
+    background: var(--color-background-dark);
+    background: linear-gradient(90deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
+    border: 1px solid rgba(0, 147, 250, 0.4);
+    border-radius: 1rem;
+    display: block;
+    margin: 0 auto;
+    height: 320px;
+    width: 240px;
+    transition: all .25s ease-in-out;
+}
+#felt.engaged {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 336px;
+    width: 256px;
+    width: 100%;
+}
+#felt.engaged .card {
+    margin: 0 0.25rem;
+    position: relative;
+}
+#deck {
+    position: fixed;
+    bottom: -120px;
+    left: calc(50vw - 120px);
+}
+.card {
+    perspective: 1000px;
+    height: 320px;
+    width: 240px;
+}
+.card-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+}
+.card-cover, .card-face {
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.card-cover {
+    /* I shamelessly stole the background from heropatterns.com */
+    background-color: #001e40;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%23193f91' fill-opacity='1' d='M0 17.83V0h17.83a3 3 0 0 1-5.66 2H5.9A5 5 0 0 1 2 5.9v6.27a3 3 0 0 1-2 5.66zm0 18.34a3 3 0 0 1 2 5.66v6.27A5 5 0 0 1 5.9 52h6.27a3 3 0 0 1 5.66 0H0V36.17zM36.17 52a3 3 0 0 1 5.66 0h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 0 1 0-5.66V52H36.17zM0 31.93v-9.78a5 5 0 0 1 3.8.72l4.43-4.43a3 3 0 1 1 1.42 1.41L5.2 24.28a5 5 0 0 1 0 5.52l4.44 4.43a3 3 0 1 1-1.42 1.42L3.8 31.2a5 5 0 0 1-3.8.72zm52-14.1a3 3 0 0 1 0-5.66V5.9A5 5 0 0 1 48.1 2h-6.27a3 3 0 0 1-5.66-2H52v17.83zm0 14.1a4.97 4.97 0 0 1-1.72-.72l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1 0-5.52l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43c.53-.35 1.12-.6 1.72-.72v9.78zM22.15 0h9.78a5 5 0 0 1-.72 3.8l4.44 4.43a3 3 0 1 1-1.42 1.42L29.8 5.2a5 5 0 0 1-5.52 0l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1-.72-3.8zm0 52c.13-.6.37-1.19.72-1.72l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43a5 5 0 0 1 5.52 0l4.43-4.43a3 3 0 1 1 1.42 1.41l-4.44 4.43c.36.53.6 1.12.72 1.72h-9.78zm9.75-24a5 5 0 0 1-3.9 3.9v6.27a3 3 0 1 1-2 0V31.9a5 5 0 0 1-3.9-3.9h-6.27a3 3 0 1 1 0-2h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 1 1 2 0v6.27a5 5 0 0 1 3.9 3.9h6.27a3 3 0 1 1 0 2H31.9z'%3E%3C/path%3E%3C/svg%3E");
+    box-shadow: inset 0px 0px 0px 8px #fff;
+}
+.card-face {
+    background: #fff;
+    color: #434C5E;
+    transform: rotateY(180deg);
+}
+.card-cover svg {
+    fill: #fff;
+    height: 56px;
+    width: 56px;
+}
+.card-face svg {
+    height: 24px;
+    width: 24px;
+}
+.card-face.club svg, .card-face.spade svg {
+    stroke: #3B4252;
+}
+.card-face.heart svg, .card-face.diamond svg {
+    stroke: #BF616A;
+}
+.card.flipped .card-container {
+    transform: rotateY(180deg);
+}
+#btnDeal {
+    background: var(--color-brand-primary);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px 16px rgba(0,0,0,0.32);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    margin: 2rem auto;
+    font-size: 1.25rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    transition: all 0.25s ease-in-out;
+}
+#btnDeal:hover {
+    box-shadow: 0 8px 8px 4px rgba(0,0,0,0.56);
+    transform: scale(0.96);
+}
+#btnDeal:focus {
+    outline: none;
+}
+#score {
+    background: var(--color-brand-primary);
+    border-radius: 0.25rem;
+    box-shadow: 0 8px 16px 8px rgba(0,0,0,0.32);
+    color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem auto;
+    opacity: 0;
+    z-index: 1000;
+    position: absolute;
+    left: calc(50% - 240px);
+    width: 0;
+    transition: all 0.25s ease-in-out;
+}
+#score.engaged {
+    opacity: 1;
+    width: 480px;
+}

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - See if you get the Upper Hand</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,600i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <partial name="_Icons">
+    <header>
+        <div class="logo">
+            <svg>
+                <use href="#mark" />
+            </svg>
+            <h3>UpperHand</h3>
+        </div>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

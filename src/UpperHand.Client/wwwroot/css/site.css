@@ -2,8 +2,14 @@
    --------------------------------------------------------------------------------------------- */
 :root {
     --color-background-dark: #111111;
-    --color-background-light: #001E40;
+    --color-background-light: #001e40;
+    --color-score-background: #f6e05e;
+    --color-score-text: #b7791f;
+    --color-score-background-good: #38b2ac;
+    --color-score-text-good: #fff;
     --color-brand-primary: #0093fa;
+    --color-heart-diamond: #bf616a;
+    --color-club-spade: #3b4252;
 }
 
 /* -- GLOBAL 
@@ -22,13 +28,19 @@ html {
 }
 body {
     background: var(--color-background-dark);
-    background: linear-gradient(-7deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
+    background: linear-gradient(-180deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
     color: rgb(236,239,244); 
     font-size: 1rem;
     height: 100vh;
     width: 100vw;
     margin: 0;
     padding: 0;
+}
+svg {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1px;
 }
 /* -- LAYOUT 
    --------------------------------------------------------------------------------------------- */
@@ -51,12 +63,6 @@ section {
 }
 /* -- COMPONENTS 
    --------------------------------------------------------------------------------------------- */
-svg {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1px;
-}
 .logo {
     display: flex;
     flex-direction: column;
@@ -72,34 +78,6 @@ svg {
 .logo h3 {
     margin: 0 auto;
     padding: 1rem 0;
-}
-#felt {
-    background: var(--color-background-dark);
-    background: linear-gradient(90deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
-    border: 1px solid rgba(0, 147, 250, 0.4);
-    border-radius: 1rem;
-    display: block;
-    margin: 0 auto;
-    height: 320px;
-    width: 240px;
-    transition: all .25s ease-in-out;
-}
-#felt.engaged {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 336px;
-    width: 256px;
-    width: 100%;
-}
-#felt.engaged .card {
-    margin: 0 0.25rem;
-    position: relative;
-}
-#deck {
-    position: fixed;
-    bottom: -120px;
-    left: calc(50vw - 120px);
 }
 .card {
     perspective: 1000px;
@@ -133,7 +111,6 @@ svg {
 }
 .card-face {
     background: #fff;
-    color: #434C5E;
     transform: rotateY(180deg);
 }
 .card-cover svg {
@@ -145,14 +122,43 @@ svg {
     height: 24px;
     width: 24px;
 }
+.card-face.club, .card-face.spade {
+    color: var(--color-club-spade);
+}
 .card-face.club svg, .card-face.spade svg {
-    stroke: #3B4252;
+    stroke: var(--color-club-spade);
+}
+.card-face.heart, .card-face.diamond {
+    color: var(--color-heart-diamond);
 }
 .card-face.heart svg, .card-face.diamond svg {
-    stroke: #BF616A;
+    stroke: var(--color-heart-diamond);
 }
 .card.flipped .card-container {
     transform: rotateY(180deg);
+}
+#felt {
+    background: var(--color-background-dark);
+    background: linear-gradient(90deg, var(--color-background-dark) 0%, var(--color-background-light) 100%);
+    border: 1px solid rgba(0, 147, 250, 0.4);
+    border-radius: 1rem;
+    display: block;
+    margin: 0 auto;
+    height: 320px;
+    width: 240px;
+    transition: all .25s ease-in-out;
+}
+#felt.engaged {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 336px;
+    width: 100%;
+}
+#felt.engaged .card {
+    margin: 0 0.25rem;
+    position: relative;
 }
 #btnDeal {
     background: var(--color-brand-primary);
@@ -164,27 +170,27 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
-    width: 80px;
+    height: 96px;
+    width: 96px;
     margin: 2rem auto;
     font-size: 1.25rem;
     position: fixed;
     bottom: 1rem;
-    right: 2rem;
+    left: calc(50% - 48px);
     transition: all 0.25s ease-in-out;
 }
 #btnDeal:hover {
     box-shadow: 0 8px 8px 4px rgba(0,0,0,0.56);
-    transform: scale(0.96);
+    transform: scale(0.9);
 }
 #btnDeal:focus {
     outline: none;
 }
 #score {
-    background: var(--color-brand-primary);
+    background: var(--color-score-background);
     border-radius: 0.25rem;
     box-shadow: 0 8px 16px 8px rgba(0,0,0,0.32);
-    color: #fff;
+    color: var(--color-score-text);
     padding: 1rem 2rem;
     margin: -2rem auto;
     opacity: 0;
@@ -197,4 +203,8 @@ svg {
 #score.engaged {
     opacity: 1;
     width: 480px;
+}
+#score.good {
+    background: var(--color-score-background-good);
+    color: var(--color-score-text-good);
 }
